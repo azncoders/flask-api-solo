@@ -6,5 +6,9 @@ jobs:
       - checkout  # checkout source code to working directory
       - run:
           command: |  # use pipenv to install dependencies
-           - pip install pipenv
-            - pipenv install --system
+            pip install pipenv
+            pipenv install --system
+            pipenv run pytest
+
+
+
