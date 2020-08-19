@@ -1,19 +1,10 @@
-version: 2.0
+version: 3.8
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.7.0
+    # ...
     steps:
-      - checkout
+      - checkout  # checkout source code to working directory
       - run:
-          name: "Install dependencies"
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install pipenv
-            pipenv install --system
-      - run:
-          name: "Run tests"
-          command: |
-            . venv/bin/activate
-            python -m unittest
+          command: |  # use pipenv to install dependencies
+           - pip install pipenv
+            - pipenv install --system
