@@ -1,18 +1,25 @@
-version: 2.1
 jobs:
-  runtests:
-  docker:
-    -image: circleci/python:3.8.5
-  steps:
-    -checkout
-    - run:
-      name: Install python dependencies
-      command:
-            pip install pipenv
-            pipenv install --system
-            pipenv run pytest
-    - run:
-      command: |
-            pipenv run pytest
+  build:
+    docker:
+      - image: circleci/<python>:<3.8.5>
+    steps:
+      - checkout
+      - run: my-command
+  test:
+    docker:
+      - image: circleci/<python>:<3.8.5>
+    steps:
+      - checkout
+      - run: my-command
+        command:
+          pip install pipenv
+          pipenv install --system
+          pipenv run pytest
 
 
+# Orchestrate our job run sequence
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
