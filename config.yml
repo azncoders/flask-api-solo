@@ -7,8 +7,8 @@ jobs:
       - run:
           command: |  # use pipenv to install dependencies
             pip install pipenv
-            pipenv install --system
-            pipenv run pytest
+            pipenv install --systempipenv run pytest
+
 
 
 
